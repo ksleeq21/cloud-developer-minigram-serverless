@@ -64,6 +64,12 @@ Call DELETE command using the `postId`.
 
 ---
 
+## Image Resizing and Post Update Notification
+
+When a new image is uploaded to IMAGE_S3_BUCKET, an event is sent to SNS Topic where two Lambda functions are subscribed to consume to resize image and send Update Notification to connected clients. Client has a persistent WebSocket connection to API Gateway and it receives a message when a new image is created. 
+
+--- 
+
 ## Distributed Tracing
 
 Access to AWS X-Ray console and view a Service map to trace API calls. 
@@ -73,6 +79,12 @@ Access to AWS X-Ray console and view a Service map to trace API calls.
 ## System Monitoring
 
 Access to AWS CloudWatch console and view Log groups for log messages. 
+
+---
+
+## Canary Deployment
+
+Canary deployment is applied to `createPost`. New version of code will be taking traffic from API Gateway based on `deploymentSettings` property in serverless.yml. It sets to `Linear10PercentEvery1Minute` currently and this means a new version of Lambda function will take 10 percent more traffic every minute.
 
 ---
 
