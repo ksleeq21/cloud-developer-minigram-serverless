@@ -198,6 +198,21 @@ functions:
           - dynamodb:DeleteItem
         Resource: 
           - arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.CONNECTIONS_TABLE}
+      - Effect: Allow
+        Action:
+          - execute-api:ManageConnections
+          - execute-api:Invoke
+        Resource: 
+          Fn::Join:
+            - ''
+            - - 'arn:aws:execute-api:'
+              - ${self:provider.region}
+              - ':*:'
+              - Ref: WebsocketsApi
+              - '/'
+              - ${self:provider.stage}
+              - '/*'
+          # arn:aws:execute-api:${self:provider.region}:*:avz7bun2cg/${self:provider.stage}/*
 
 resources:
   Resources:

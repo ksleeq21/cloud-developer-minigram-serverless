@@ -19,12 +19,12 @@ const connectionsAccess = new ConnectionsAccess()
 
 export async function processUpdateNotification(event: SNSEvent) {
     
-    logger.info('Processing SNS event ', JSON.stringify(event))
+    logger.info(`Processing SNS event: ${JSON.stringify(event)}`)
 
     for (const snsRecord of event.Records) {
         const s3EventStr = snsRecord.Sns.Message
 
-        logger.info('Processing S3 event', s3EventStr)
+        logger.info(`Processing S3 event: ${s3EventStr}`)
         
         const s3Event = JSON.parse(s3EventStr)
 
@@ -36,15 +36,18 @@ async function processS3EventUpdateNotification(event: S3Event) {
     for (const record of event.Records) {
 
         const key = record.s3.object.key
-        logger.info('Processing S3 item with key: ', key)
+        logger.info(`Processing S3 item with key: ${key}`)
 
         const connectionItems: ConnectionItem [] = await connectionsAccess.getAllConnections()
         const payload = {
             postId: key
         }
 
+        logger.info(`connectionItems: ${connectionItems}`)
+
         for (const connection of connectionItems) {
             const connectionId = connection.id
+            logger.info(`connectionId: ${connectionId}`)
             await sendMessageToClient(connectionId, payload)
         }
     }
@@ -52,7 +55,7 @@ async function processS3EventUpdateNotification(event: S3Event) {
 
 async function sendMessageToClient(connectionId: string, payload: { postId: string }) {
     try {
-        logger.info('Sending message to a connection', connectionId)
+        logger.info(`Sending message to a connectionId: ${connectionId}`)
         
         await apiGateway.postToConnection({
             ConnectionId: connectionId,
@@ -60,7 +63,7 @@ async function sendMessageToClient(connectionId: string, payload: { postId: stri
         }).promise()
 
     } catch (e) {
-        logger.info('Failed to send message', JSON.stringify(e))
+        logger.info(`Failed to send message e: ${JSON.stringify(e)}`)
         if (e.statusCode === 410) {
             logger.info('Stale connection')
             await connectionsAccess.deleteConnection(connectionId)

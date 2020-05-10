@@ -14,7 +14,7 @@ export async function processThumbnail(event: SNSEvent) {
     for (const snsRecord of event.Records) {
         const s3EventStr = snsRecord.Sns.Message
 
-        logger.info('Processing S3 event', s3EventStr)
+        logger.info(`Processing S3 event ${s3EventStr}`)
         
         const s3Event = JSON.parse(s3EventStr)
 
