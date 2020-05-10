@@ -1,0 +1,13 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "update-post",
+    "type": "object",
+    "properties": {
+        "title": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "title"
+    ]
+}
