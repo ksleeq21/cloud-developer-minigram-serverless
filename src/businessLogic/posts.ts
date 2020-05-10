@@ -6,6 +6,9 @@ import { APIGatewayProxyEvent } from 'aws-lambda'
 import { CreatePostRequest } from '../requests/CreatePostRequest'
 import { UpdatePostRequest } from '../requests/UpdatePostRequest'
 import { getUserId } from '../lambda/utils'
+import { createLogger } from '../utils/logger'
+
+const logger = createLogger('auth')
 
 const postsAccess = new PostsAccess()
 const imageBucketAccess = new ImageBucketAccess()
@@ -26,6 +29,8 @@ export async function createPost(
   const attachmentUrl = `https://${imageBucketAccess.getBucketName()}.s3.amazonaws.com/${postId}`
   const createdAt = new Date().toISOString()
 
+  logger.info(`new postItem: ${JSON.stringify({ title, userId, postId, attachmentUrl, createdAt })}`)
+  
   return await postsAccess.createPost({
     userId,
     postId,
