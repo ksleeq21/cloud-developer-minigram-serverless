@@ -64,9 +64,33 @@ Call DELETE command using the `postId`.
 
 ---
 
+## Test WebSocket connnection and New Post Update Notification
+
+To test WebSocket connection and Update Notification, need to install wscat. 
+
+Install wscat
+```
+npm install -g wscat
+```
+
+Run wscat with WebSocket endpoint
+```
+wscat -c wss://avz7bun2cg.execute-api.us-west-2.amazonaws.com/dev
+```
+
+Receive a Update Notification message
+```
+example)
+$ wscat -c wss://avz7bun2cg.execute-api.us-west-2.amazonaws.com/dev
+Connected (press CTRL+C to quit)
+< {"postId":"8a953f47-0c83-4041-a6c1-8dce1dc3ee40"}
+```
+
+---
+
 ## Image Resizing and Post Update Notification
 
-When a new image is uploaded to IMAGE_S3_BUCKET, an event is sent to SNS Topic where two Lambda functions are subscribed to consume to resize image and send Update Notification to connected clients. Client has a persistent WebSocket connection to API Gateway and it receives a message when a new image is created. 
+When a new image is uploaded to IMAGE_S3_BUCKET, an event is sent to SNS Topic where two Lambda functions are subscribed to consume to resize image and send Update Notification to connected clients. Client has a persistent WebSocket connection to API Gateway and it receives a message which has a postId just created when a new image is uploaded.
 
 --- 
 
