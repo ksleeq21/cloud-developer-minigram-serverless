@@ -47,11 +47,18 @@ To test out API endpoints, use Postman application with a collection file in the
 ### Get all posts
 Call GET Get all posts command.
 
+<img src="./screenshots/postman-get-all-posts.png" alt="GET" height="300"/>
+
+
 ### Create a new post
 Call POST Create a post command.
 
+<img src="./screenshots/postman-create-post.png" alt="POST" height="300"/>
+
 ### Generate attachment URL
 Call POST Get attachment URL command with a postId that was created by `POST Create a post command`.
+
+<img src="./screenshots/postman-get-attachment-url.png" alt="POST" height="300"/>
 
 ### Upload Image
 Call PUT command using the `uploadURL` that was created by `POST Get attachment URL command`. Need to select an image file from your local machine. 
@@ -59,8 +66,12 @@ Call PUT command using the `uploadURL` that was created by `POST Get attachment 
 ### Update a post
 Call PATCH command using the `postId` with updated title.
 
+<img src="./screenshots/postman-update-post.png" alt="POST" height="300"/>
+
 ### Delete a post
 Call DELETE command using the `postId`.
+
+<img src="./screenshots/postman-delete-post.png" alt="POST" width="480"/>
 
 ---
 
@@ -97,6 +108,8 @@ When a new image is uploaded to IMAGE_S3_BUCKET, an event is sent to SNS Topic w
 ## Distributed Tracing
 
 Access to AWS X-Ray console and view a Service map to trace API calls. 
+
+<img src="./screenshots/aws-x-ray.png" alt="POST" height="280"/>
 
 ---
 
