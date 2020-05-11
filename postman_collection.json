@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "d0700d24-79ec-487e-8403-b565bef7f8e0",
-		"name": "Udacity C4 Project",
+		"_postman_id": "3969d606-7ece-45fb-931f-351143845e5a",
+		"name": "MinigramServerless",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -19,17 +19,13 @@
 								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
-							"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/posts",
+							"raw": "https://{{apiId}}.execute-api.us-west-2.amazonaws.com/dev/posts",
 							"protocol": "https",
 							"host": [
 								"{{apiId}}",
 								"execute-api",
-								"us-east-1",
+								"us-west-2",
 								"amazonaws",
 								"com"
 							],
@@ -60,15 +56,15 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\": \"Water flowers\",\n\t\"description\": \"2019-06-11\"\n}"
+							"raw": "{\n\t\"title\": \"Flower in May\"\n}"
 						},
 						"url": {
-							"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/posts",
+							"raw": "https://{{apiId}}.execute-api.us-west-2.amazonaws.com/dev/posts",
 							"protocol": "https",
 							"host": [
 								"{{apiId}}",
 								"execute-api",
-								"us-east-1",
+								"us-west-2",
 								"amazonaws",
 								"com"
 							],
@@ -83,7 +79,7 @@
 				{
 					"name": "Update post",
 					"request": {
-						"method": "PUT",
+						"method": "PATCH",
 						"header": [
 							{
 								"key": "Content-Type",
@@ -99,22 +95,22 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\": \"Change the world\",\n\t\"description\": \"2019-12-11\"\n}"
+							"raw": "{\n\t\"title\": \"My dog, no. my cat\"\n}"
 						},
 						"url": {
-							"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/posts/35dd600f-43c2-4649-903c-615e1586a26f",
+							"raw": "https://{{apiId}}.execute-api.us-west-2.amazonaws.com/dev/posts/6df2ab38-ab48-4eb5-a6b6-b82ff26a9a27",
 							"protocol": "https",
 							"host": [
 								"{{apiId}}",
 								"execute-api",
-								"us-east-1",
+								"us-west-2",
 								"amazonaws",
 								"com"
 							],
 							"path": [
 								"dev",
 								"posts",
-								"35dd600f-43c2-4649-903c-615e1586a26f"
+								"6df2ab38-ab48-4eb5-a6b6-b82ff26a9a27"
 							]
 						}
 					},
@@ -142,12 +138,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/posts/fe671583-4512-45f6-9475-4265c04362fb",
+							"raw": "https://{{apiId}}.execute-api.us-west-2.amazonaws.com/dev/posts/fe671583-4512-45f6-9475-4265c04362fb",
 							"protocol": "https",
 							"host": [
 								"{{apiId}}",
 								"execute-api",
-								"us-east-1",
+								"us-west-2",
 								"amazonaws",
 								"com"
 							],
@@ -176,12 +172,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/posts/3836b777-9bc4-4429-9b79-ba4e4f5f91c0/attachment",
+							"raw": "https://{{apiId}}.execute-api.us-west-2.amazonaws.com/dev/posts/3836b777-9bc4-4429-9b79-ba4e4f5f91c0/attachment",
 							"protocol": "https",
 							"host": [
 								"{{apiId}}",
 								"execute-api",
-								"us-east-1",
+								"us-west-2",
 								"amazonaws",
 								"com"
 							],
@@ -200,7 +196,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "ce2b42d4-8cc5-4f30-a6ed-e7f0f303c3fd",
+						"id": "15ae0b37-621a-4ba3-bd1c-260b98cb4415",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -210,21 +206,22 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "efb16c49-3866-4241-97d1-360ad72736d8",
+						"id": "9e71dcdc-60e1-4214-9a29-12d464c81b8d",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "2e83c0fe-6650-44d5-a90f-4c27ff720d83",
+				"id": "75a1b141-ee18-4d90-9a87-29fb078dcc8e",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -234,7 +231,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "977c227e-2df3-42eb-9a48-ec25e2f7eeae",
+				"id": "f40e457f-d1e7-4028-998a-0b704b216453",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -244,16 +241,17 @@
 	],
 	"variable": [
 		{
-			"id": "bf208e6b-f66d-4008-9366-dd541ff65425",
+			"id": "bfa6e26a-4c74-44f4-b30d-bddc111d43c8",
 			"key": "apiId",
-			"value": "",
+			"value": "04p562hu5c",
 			"type": "string"
 		},
 		{
-			"id": "9bc6399a-d2bb-4f2d-9ffa-8480370d383c",
+			"id": "77c718c5-0f53-4940-8c51-a87488973029",
 			"key": "authToken",
-			"value": "",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlJVSTNSRVF5TmtFMFJURXlRVUpHTWpBNFF6azNNa1ZET0RWQ1EwUTVNRU15UVRGQ1JUUXpSZyJ9.eyJpc3MiOiJodHRwczovL3JlbGF5cGljLmF1dGgwLmNvbS8iLCJzdWIiOiJnb29nbGUtb2F1dGgyfDEwMzgwMzg4NjQzMDU0ODUxNTM0NCIsImF1ZCI6Ikx1OVN0R3JmMHp3MThNSUFrQnRZdHRoeTBjcjRMNXVYIiwiaWF0IjoxNTg5MTMyODEyLCJleHAiOjE1ODk5OTY4MTIsImF0X2hhc2giOiJwaEgwd1pjV2Y3anVJN0JPSF9KTXVBIiwibm9uY2UiOiJBUW1CWkp-cmlxdVlnOEFUZDl1TGlQZWZ3aks2SnVDNSJ9.DnuzoCnQDmspBWjjmT9AHvfl05-pUM3hXWkmvQxWnaGj98lx1iB2E8VHxcolEvcgQXeHASxqrfogyflADMvZw-BVQYLYeO02uJiDTRdBcw3-fO_0FJu-ZkmKyu_4ICDM-d6LyHlF-W39-f4sPIIBmJuMUwqCTTV_CrbCaR0go8tu_8JCHA9kDZPCgqOkD_4laRaoxn2ndHGlDNWkYqp_KJFf9QRGDdtl1fj4uIcjUQVugyX2ApvFrQw3cwrcHixb1BwBFdYJkUAcUzLi_4hz_y1NwdOHSvU0hKuwmMuLtXJudqxmoSIfmIVBe0F8lPHsA35e_h6HbWKf_A405g_N9g",
 			"type": "string"
 		}
-	]
+	],
+	"protocolProfileBehavior": {}
 }
