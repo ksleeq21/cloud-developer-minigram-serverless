@@ -146,9 +146,14 @@ Canary deployment is applied to `createPost`. New version of code will be taking
 ---
 
 ## Screenshots
-- postman-get-all-posts.png: Get all posts
+- aws-apigateway.png: API Gateway provisioned by Serverless
+- aws-code-deploy.png: Code Deploy for Canary deployment
+- aws-ddb-tables.png: DynamoDB tables for Posts and WebSocket Connections
+- aws-lambda-functions.png: Lambda functions serving API endpoints
+- aws-s3-buckets.png: S3 Bucket for Post attachment and resized images
+- aws-x-ray.png: X-Ray Services map for tracing
 - postman-create-post.png: Create a post
-- postman-get-attachment-url.png: Get attachmentURL
-- postman-update-post.png: Update a post
 - postman-delete-post.png: Delete a post
-- aws-x-ray.png: X-Ray Service map
+- postman-get-all-posts.png: Get all posts of a user
+- postman-get-attachment-url.png: Get signed upload URL for Post attachment
+- postman-update-post.png: Update a post
