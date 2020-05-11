@@ -33,6 +33,24 @@ Deploy project to dev environment
 sls deploy -v --stage dev
 ```
 
+Serverless framework provisions several AWS resource tyes. 
+
+API Gateway
+
+<img src="./screenshots/aws-apigateway.png" alt="AWS API Gateway" width="500"/>
+
+Lambda functions
+
+<img src="./screenshots/aws-lambda-functions.png" alt="AWS Lambda Functions" width="500"/>
+
+S3 Buckets
+
+<img src="./screenshots/aws-s3-buckets.png" alt="AWS S3 Buckets" width="500"/>
+
+DynamoDB Tables 
+
+<img src="./screenshots/aws-ddb-tables.png" alt="AWS S3 Buckets" width="500"/>
+
 ---
 
 ## Test API endpoints
@@ -47,18 +65,18 @@ To test out API endpoints, use Postman application with a collection file in the
 ### Get all posts
 Call GET Get all posts command.
 
-<img src="./screenshots/postman-get-all-posts.png" alt="GET" height="300"/>
+<img src="./screenshots/postman-get-all-posts.png" alt="GET" width="500"/>
 
 
 ### Create a new post
 Call POST Create a post command.
 
-<img src="./screenshots/postman-create-post.png" alt="POST" height="300"/>
+<img src="./screenshots/postman-create-post.png" alt="POST" width="500"/>
 
 ### Generate attachment URL
 Call POST Get attachment URL command with a postId that was created by `POST Create a post command`.
 
-<img src="./screenshots/postman-get-attachment-url.png" alt="POST" height="300"/>
+<img src="./screenshots/postman-get-attachment-url.png" alt="POST" width="500"/>
 
 ### Upload Image
 Call PUT command using the `uploadURL` that was created by `POST Get attachment URL command`. Need to select an image file from your local machine. 
@@ -66,12 +84,12 @@ Call PUT command using the `uploadURL` that was created by `POST Get attachment 
 ### Update a post
 Call PATCH command using the `postId` with updated title.
 
-<img src="./screenshots/postman-update-post.png" alt="POST" height="300"/>
+<img src="./screenshots/postman-update-post.png" alt="POST" width="500"/>
 
 ### Delete a post
 Call DELETE command using the `postId`.
 
-<img src="./screenshots/postman-delete-post.png" alt="POST" width="480"/>
+<img src="./screenshots/postman-delete-post.png" alt="POST" width="500"/>
 
 ---
 
@@ -109,7 +127,7 @@ When a new image is uploaded to IMAGE_S3_BUCKET, an event is sent to SNS Topic w
 
 Access to AWS X-Ray console and view a Service map to trace API calls. 
 
-<img src="./screenshots/aws-x-ray.png" alt="POST" height="280"/>
+<img src="./screenshots/aws-x-ray.png" alt="POST" width="500"/>
 
 ---
 
@@ -122,6 +140,8 @@ Access to AWS CloudWatch console and view Log groups for log messages.
 ## Canary Deployment
 
 Canary deployment is applied to `createPost`. New version of code will be taking traffic from API Gateway based on `deploymentSettings` property in serverless.yml. It sets to `Linear10PercentEvery1Minute` currently and this means a new version of Lambda function will take 10 percent more traffic every minute.
+
+<img src="./screenshots/aws-code-deploy.png" alt="AWS Code Deploy" width="500"/>
 
 ---
 
